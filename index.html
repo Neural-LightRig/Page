@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- <script>
+    const allowedDomain = "projects.zxhezexin.com";
+    if (window.location.hostname !== allowedDomain) {
+      window.location.href = `https://${allowedDomain}/neural-lightrig`;
+    }
+  </script> -->
+
   <meta charset="utf-8">
   <meta name="description"
         content="Neural LightRig: Unlocking Accurate Object Normal and Material Estimation with Multi-Light Diffusion.">
@@ -32,7 +39,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" href="./static/images/favicon.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -112,7 +119,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/pdf/2011.12948"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -121,7 +128,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2011.12948"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -131,7 +138,7 @@
               </span>
               <!-- Video Link. -->
               <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-youtube"></i>
@@ -141,7 +148,7 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies"
+                <a href="https://github.com/ZexinHe/Neural-LightRig"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -151,7 +158,7 @@
               </span>
               <!-- Dataset Link. -->
               <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
@@ -169,22 +176,31 @@
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
+    <!-- Teaser. -->
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
+      <img src="./static/images/results_main-HQ.jpeg" alt="Teaser" style="width: 100%">
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
+        <span class="method-name">Neural LightRig</span> takes an image as input and generates multi-light images to assist <br> 
+        the estimation of high-quality normal and PBR materials, which can be used to <br> 
+        render realistic relit images under various environment lighting.
       </h2>
     </div>
+    <!--/ Teaser. -->
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <!-- <h2 class="title is-3">Demo Video</h2> -->
+        <video id="demo-video" controls playsinline preload="auto" height="100%">
+          <source src="./static/videos/video-v2.0-1080p.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <!--/ Paper video. -->
   </div>
 </section>
 
 
-<section class="hero is-light is-small">
+<!-- <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
@@ -239,62 +255,96 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column is-full-width">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
+            Recovering the geometry and materials of objects from a single image is challenging due to its under-constrained nature.
+            In this paper, we present <span class="method-name">Neural LightRig</span>, a novel framework that boosts intrinsic estimation by leveraging auxiliary multi-lighting conditions from 2D diffusion priors.
           </p>
           <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
+            <strong>1)</strong> We first leverage illumination priors from large-scale diffusion models to build our <strong>Multi-Light Diffusion Model</strong> on a synthetic relighting dataset with dedicated designs.
+            This diffusion model generates multiple consistent images, each illuminated by point light sources in different directions.
+            <br>
+            <br>
+            <strong>2)</strong> By using these varied lighting images to reduce estimation uncertainty, we train a <strong>Large G-Buffer Model</strong> with a U-Net backbone to accurately predict surface normals and materials.
           </p>
           <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            Extensive experiments validate that our approach significantly outperforms state-of-the-art methods, enabling accurate surface normal and PBR material estimation with vivid relighting effects.
           </p>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
-
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <!--/ Paper video. -->
   </div>
 </section>
 
+<section>
+  <div class="container is-max-desktop">
+    <!--/ Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/method_overview.jpg" alt="Method Overview" style="width: 100%">
+          <p>
+            <strong>Framework Overview.</strong>
+            Multi-light diffusion generates multi-light images from an input image.
+            These images with corresponding lighting orientations are then used to predict surface normals and PBR materials with a regression U-Net.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Method. -->
+  </div>
+</section>
+
+<section>
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-justified">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Comparisons</h2>
+        
+        <!-- Compare Normal. -->
+        <h3 class="title is-4">Surface Normal Estimation</h3>
+        <div class="content">
+          <img src="./static/images/normal_compare_main-HQ.jpeg" alt="Normal Comparison" style="width: 100%">
+          <p>
+            Qualitative comparison on surface normal estimation.
+            Ground truth normals (G.T.) are provided for input images rendered from available 3D objects and are omitted for in-the-wild images.
+          </p>
+        </div>
+
+        <!-- Compare PBR. -->
+        <h3 class="title is-4">PBR Material Estimation</h3>
+        <div class="content">
+          <img src="./static/images/pbr_compare_main-HQ.jpeg" alt="PBR Comparison" style="width: 100%">
+          <p>
+            Qualitative comparison on PBR material estimation.
+            Ground truth materials (G.T.) are provided for input images rendered from available 3D objects and are omitted for in-the-wild images.
+          </p>
+        </div>
+
+        <!-- Compare Relighting. -->
+        <h3 class="title is-4">Single-Image Relighting</h3>
+        <div class="content">
+          <img src="./static/images/relit_compare_main-HQ.jpeg" alt="Relighting Comparison" style="width: 100%">
+          <p>
+            Qualitative comparison on single-image relighting.
+            The input image is relit with the estimated normal and material under different lighting conditions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -380,7 +430,7 @@
         <h3 class="title is-4">Re-rendering the input video</h3>
         <div class="content has-text-justified">
           <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
+            Using <span class="method-name">Nerfies</span>, you can re-render a video from a novel
             viewpoint such as a stabilized camera by playing back the training deformations.
           </p>
         </div>
@@ -449,16 +499,16 @@
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <a class="icon-link" href="./assets/2212.02766.pdf" disabled>
+      <a class="icon-link external-link" href="" disabled>
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link external-link" href="https://arxiv.org/abs/2212.02766" disabled>
+      <a class="icon-link external-link" href="" disabled>
         <i class="ai ai-arxiv"></i>
       </a>
-      <a class="icon-link external-link" href="https://youtu.be/jnsnrTwVSBw" disabled>
+      <a class="icon-link external-link" href="" disabled>
         <i class="fab fa-youtube"></i>
       </a>
-      <a class="icon-link external-link" href="" disabled>
+      <a class="icon-link external-link" href="https://github.com/ZexinHe/Neural-LightRig" disabled>
         <i class="fab fa-github"></i>
       </a>
       <a class="icon-link external-link" href="" disabled>
@@ -469,12 +519,12 @@
       <div class="column is-8">
         <div class="content">
           <p>
-            This website is licensed under a <a rel="license"
+            This page is licensed under a <a rel="license"
                                                 href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
           <p>
-            Website template by <a href="https://nerfies.github.io/">Nerfies</a>.
+            Page template powered by <a href="https://nerfies.github.io/">Nerfies</a>. We thank the authors for sharing the templates.
           </p>
         </div>
       </div>
