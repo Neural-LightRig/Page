@@ -13,8 +13,9 @@ body {
     margin-bottom: 5px;
 }
 
-.dnerf {
+.method-name {
   font-variant: small-caps;
+  font-weight: bold;
 }
 
 
