@@ -2,9 +2,11 @@
 <html>
 <head>
   <script>
-    const allowedDomain = "projects.zxhezexin.com";
-    if (window.location.hostname !== allowedDomain) {
-      window.location.href = `https://${allowedDomain}/neural-lightrig`;
+    const allowedOrigin = "https://projects.zxhezexin.com";
+    const allowedPath = "/neural-lightrig";
+
+    if (window.location.origin !== allowedOrigin || !window.location.pathname.startsWith(allowedPath)) {
+        window.location.href = `${allowedOrigin}${allowedPath}`;
     }
   </script>
 
