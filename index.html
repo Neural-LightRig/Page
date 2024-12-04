@@ -2,11 +2,14 @@
 <html>
 <head>
   <script>
-    const allowedOrigin = "https://projects.zxhezexin.com";
+    const allowedHostname = "projects.zxhezexin.com";
     const allowedPath = "/neural-lightrig";
 
-    if (window.location.origin !== allowedOrigin || !window.location.pathname.startsWith(allowedPath)) {
-        window.location.href = `${allowedOrigin}${allowedPath}`;
+    if (
+        window.top.location.hostname.includes(allowedHostname) &&
+        !window.top.location.pathname.startsWith(allowedPath)
+    ) {
+        window.top.location.href = `https://${allowedHostname}${allowedPath}`;
     }
   </script>
 
