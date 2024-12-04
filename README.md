@@ -2,7 +2,7 @@
 
 This is the repository that contains source code for the project page of [Neural LightRig](https://projects.zxhezexin.com/neural-lightrig).
 
-If you find Nerfies useful for your work please cite:
+If you find **Neural LightRig** useful for your work please cite:
 ```
 @misc{neural_lightrig,
     title={Neural LightRig: Unlocking Accurate Object Normal and Material Estimation with Multi-Light Diffusion}, 
