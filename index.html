@@ -4,13 +4,30 @@
   <script>
     const allowedHostname = "projects.zxhezexin.com";
     const allowedPath = "/neural-lightrig";
+    const fileToCheck = "./LOCAL.FLAG";
 
-    if (
-        !window.top.location.hostname.includes(allowedHostname) ||
-        !window.top.location.pathname.startsWith(allowedPath)
-    ) {
-        window.top.location.href = `https://${allowedHostname}${allowedPath}`;
+    function fileExists(url, callback) {
+        fetch(url, { method: "HEAD" })
+            .then(response => {
+                callback(response.ok);
+            })
+            .catch(() => {
+                callback(false);
+            });
     }
+
+    fileExists(fileToCheck, fileExists => {
+        if (!fileExists) {
+            if (
+                !window.top.location.hostname.includes(allowedHostname) ||
+                !window.top.location.pathname.startsWith(allowedPath)
+            ) {
+                window.top.location.href = `https://${allowedHostname}${allowedPath}`;
+            }
+        } else {
+            console.log("Redirecting disabled due to presence of the file:", fileToCheck);
+        }
+    });
   </script>
 
   <meta charset="utf-8">
