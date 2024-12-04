@@ -1,14 +1,17 @@
-# Nerfies
+# Neural LightRig
 
-This is the repository that contains source code for the [Nerfies website](https://nerfies.github.io).
+This is the repository that contains source code for the project page of [Neural LightRig](https://projects.zxhezexin.com/neural-lightrig).
 
 If you find Nerfies useful for your work please cite:
 ```
-@article{park2021nerfies
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+@misc{neural_lightrig,
+    title={Neural LightRig: Unlocking Accurate Object Normal and Material Estimation with Multi-Light Diffusion}, 
+    author={Zexin He and Tengfei Wang and Xin Huang and Xingang Pan and Ziwei Liu},
+    year={2024},
+    eprint={2412.xxxxx},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV},
+    url={https://arxiv.org/abs/2412.xxxxx},
 }
 ```
 
