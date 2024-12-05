@@ -187,3 +187,42 @@ body {
   overflow-x: auto; /* Enable horizontal scrolling if needed */
   white-space: pre-wrap; /* Preserve formatting and wrap text */
 }
+
+.video-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center align items */
+  gap: 10px; /* Add spacing between items */
+}
+
+.video-item {
+  flex: 1 1 14%; /* Allow dynamic resizing with a minimum width */
+  max-width: 320px; /* Prevent items from growing beyond 14% on larger screens */
+  box-sizing: border-box; /* Include padding and border in width */
+}
+
+.video-item video {
+  width: 100%; /* Make videos fill their container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+@media (max-width: 1024px) {
+  .video-item {
+    flex: 1 1 30%; /* Increase size for smaller screens */
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-item {
+    flex: 1 1 45%; /* Allow 2 videos per row */
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-item {
+    flex: 1 1 90%; /* Make videos stack in a single column */
+    max-width: 320px;
+  }
+}
