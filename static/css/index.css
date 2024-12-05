@@ -226,3 +226,9 @@ body {
     max-width: 320px;
   }
 }
+
+a.disabled {
+    pointer-events: none; /* Disable clicks */
+    opacity: 0.5; /* Make it visually gray */
+    cursor: not-allowed; /* Show a not-allowed cursor on hover */
+}
