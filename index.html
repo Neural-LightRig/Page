@@ -430,35 +430,50 @@
               document.addEventListener("DOMContentLoaded", () => {
                 const rows = [1, 2, 3]; // Adjust based on the number of rows
                 const methods = ["rgbx", "dilightnet", "yietal", "ia", "ours", "gt"]; // Methods corresponding to columns
-              
+            
                 rows.forEach((rowNumber) => {
                   const videos = methods.map(
                     (method) => document.getElementById(`row-${rowNumber}-${method}`)
                   );
-              
+            
                   let readyVideos = 0;
-              
+            
                   const onVideoReady = () => {
                     readyVideos++;
                     if (readyVideos === videos.length) {
-                      // Reset all videos to the same start time and play
+                      // Align all videos in the row
                       const currentTime = videos[0].currentTime;
                       videos.forEach((video) => {
                         video.currentTime = currentTime;
+                      });
+            
+                      // Ensure all videos play simultaneously
+                      videos.forEach((video) => {
                         video.play();
+                      });
+            
+                      // Sync during playback
+                      const syncInterval = setInterval(() => {
+                        const referenceTime = videos[0].currentTime;
+                        videos.forEach((video) => {
+                          if (Math.abs(video.currentTime - referenceTime) > 0.1) {
+                            video.currentTime = referenceTime;
+                          }
+                        });
+                      }, 100);
+            
+                      // Clear sync on pause
+                      videos.forEach((video) => {
+                        video.addEventListener("pause", () => {
+                          clearInterval(syncInterval);
+                        });
                       });
                     }
                   };
-              
-                  // Attach event listeners to videos in the row
+            
+                  // Attach event listeners to each video
                   videos.forEach((video) => {
                     video.addEventListener("loadeddata", onVideoReady);
-                    video.addEventListener("play", () => {
-                      const currentTime = video.currentTime;
-                      videos.forEach((vid) => {
-                        if (vid !== video) vid.currentTime = currentTime;
-                      });
-                    });
                   });
                 });
               });
