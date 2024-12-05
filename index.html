@@ -313,11 +313,42 @@
     </div>
 
     <script>
+      // Preload images
+      const preloadImages = () => {
+        const numImages = 9;
+        const lightSourceImages = [];
+        const lightImageImages = [];
+        
+        for (let i = 0; i < numImages; i++) {
+          const lightSourceImg = new Image();
+          lightSourceImg.src = `./static/images/slider/lighting-relation-${i}.png`;
+          lightSourceImages.push(lightSourceImg);
+
+          const lightImageImg = new Image();
+          lightImageImg.src = `./static/images/slider/light-image-${i}.png`;
+          lightImageImages.push(lightImageImg);
+        }
+
+        // Store preloaded images in a global object for easy access
+        window.preloadedImages = {
+          lightSource: lightSourceImages,
+          lightImage: lightImageImages,
+        };
+      };
+
+      // Update images based on slider value
       function updateLight(index) {
-        document.getElementById('light-source').src = `./static/images/slider/lighting-relation-${index}.png`;
-        document.getElementById('light-image').src = `./static/images/slider/light-image-${index}.png`;
+        const lightSourceImg = window.preloadedImages.lightSource[index];
+        const lightImageImg = window.preloadedImages.lightImage[index];
+
+        document.getElementById('light-source').src = lightSourceImg.src;
+        document.getElementById('light-image').src = lightImageImg.src;
+
         document.getElementById('slider-value').innerText = parseInt(index) + 1;
       }
+
+      // Preload images on page load
+      document.addEventListener("DOMContentLoaded", preloadImages);
     </script>
   </div>
 </section>
