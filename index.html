@@ -358,6 +358,20 @@
               <p>DiLightNet</p>
             </div>
 
+            <!-- IC-Light. -->
+            <div class="video-item">
+              <video id="row-1-iclight" playsinline autoplay muted loop>
+                <source src="./static/videos/relit_videos/iclight/brownstudio_0.mp4" type="video/mp4">
+              </video>
+              <video id="row-2-iclight" playsinline autoplay muted loop>
+                <source src="./static/videos/relit_videos/iclight/sunrise_0.mp4" type="video/mp4">
+              </video>
+              <video id="row-3-iclight" playsinline autoplay muted loop>
+                <source src="./static/videos/relit_videos/iclight/courtyard_0.mp4" type="video/mp4">
+              </video>
+              <p>IC-Light</p>
+            </div>
+
             <!-- Yi. et al. -->
             <div class="video-item">
               <video id="row-1-yietal" playsinline autoplay muted loop>
@@ -385,20 +399,6 @@
               </video>
               <p>IntrinsicAnything</p>
             </div>
-
-            <!-- IC-Light. -->
-            <!-- <div class="video-item">
-              <video id="row-1-iclight" playsinline autoplay muted loop>
-                <source src="./static/videos/relit_videos/iclight/brownstudio_0.mp4" type="video/mp4">
-              </video>
-              <video id="row-2-iclight" playsinline autoplay muted loop>
-                <source src="./static/videos/relit_videos/iclight/sunrise_0.mp4" type="video/mp4">
-              </video>
-              <video id="row-3-iclight" playsinline autoplay muted loop>
-                <source src="./static/videos/relit_videos/iclight/courtyard_0.mp4" type="video/mp4">
-              </video>
-              <p>IC-Light</p>
-            </div> -->
           
             <!-- Ours. -->
             <div class="video-item">
@@ -431,7 +431,7 @@
             <script>
               document.addEventListener("DOMContentLoaded", () => {
                 const rows = [1, 2, 3]; // Adjust based on the number of rows
-                const methods = ["rgbx", "dilightnet", "yietal", "ia", "ours", "gt"]; // Methods corresponding to columns
+                const methods = ["rgbx", "dilightnet", "iclight", "yietal", "ia", "ours", "gt"]; // Methods corresponding to columns
             
                 rows.forEach((rowNumber) => {
                   const videos = methods.map(

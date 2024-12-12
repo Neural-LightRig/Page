@@ -192,11 +192,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; /* Center align items */
-  gap: 10px; /* Add spacing between items */
+  gap: 8px; /* Add spacing between items */
 }
 
 .video-item {
-  flex: 1 1 14%; /* Allow dynamic resizing with a minimum width */
+  flex: 1 1 12%; /* Allow dynamic resizing with a minimum width */
   max-width: 320px; /* Prevent items from growing beyond 14% on larger screens */
   box-sizing: border-box; /* Include padding and border in width */
 }
