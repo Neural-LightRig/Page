@@ -8,10 +8,10 @@ If you find **Neural LightRig** useful for your work please cite:
     title={Neural LightRig: Unlocking Accurate Object Normal and Material Estimation with Multi-Light Diffusion}, 
     author={Zexin He and Tengfei Wang and Xin Huang and Xingang Pan and Ziwei Liu},
     year={2024},
-    eprint={2412.xxxxx},
+    eprint={2412.09593},
     archivePrefix={arXiv},
     primaryClass={cs.CV},
-    url={https://arxiv.org/abs/2412.xxxxx},
+    url={https://arxiv.org/abs/2412.09593},
 }
 ```
 
